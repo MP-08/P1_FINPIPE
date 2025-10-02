@@ -1,0 +1,14 @@
+venv/
+.venv/
+configs/env/.env.dev
+configs/env/.env.prod
+
+data/dev/
+data/prod/
+database/
+
+.sparkStaging/
+*.crc
+*.log
+__pycache__/
+*.pyc
