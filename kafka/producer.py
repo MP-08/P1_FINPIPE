@@ -8,7 +8,7 @@ from datetime import datetime
 from faker import Faker
 from confluent_kafka import Producer
 
-TOPIC = os.getenv("KAFKA_TOPIC", "transactions_dev")  # default dev
+TOPIC = os.getenv("KAFKA_TOPIC", "transactions_dev")  
 BOOTSTRAP = os.getenv("KAFKA_BOOTSTRAP_SERVERS", "localhost:9094")
 SEC_PROTO = os.getenv("KAFKA_SECURITY_PROTOCOL", "PLAINTEXT")
 
@@ -36,9 +36,7 @@ def make_event():
         "amount": round(random.uniform(5.0, 5000.0), 2),
         "currency": "USD",
         "timestamp": datetime.utcnow().isoformat(timespec="seconds") + "Z",
-        # opcional: si quisieras que venga del productor para particionar sin derivarlo
-        # "event_date": datetime.utcnow().date().isoformat(),
-    }
+    }  
 
 def main():
     conf = {
