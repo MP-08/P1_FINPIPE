@@ -59,27 +59,17 @@ Cada capa cumple una función clara:
 
 ## 📂 Estructura del proyecto
 
-
-P1_FINPIPE/
-├── jobs/
-│ ├── streaming_to_bronze.py
-│ ├── bronze_to_silver.py
-│ └── silver_to_gold.py
-├── kafka/
-│ ├── producer.py
-│ └── test_consumer.py
-├── scripts/
-│ ├── reset_dev_delta.sh
-│ └── ...
-├── docker/
-│ └── docker-compose.yml
-├── data/
-│ └── dev/ (datasets locales, excluidos del repo)
-├── logs/
-│ └── dev/ (salidas de logs)
-├── Makefile
-├── requirements.txt
-└── README.md
+| Carpeta / Archivo | Descripción |
+|--------------------|-------------|
+| `jobs/` | Scripts de procesamiento (streaming, transformaciones, gold). |
+| `kafka/` | Productor y consumidor Kafka. |
+| `scripts/` | Scripts utilitarios y de mantenimiento. |
+| `docker/` | Configuración Docker Compose. |
+| `data/` | Data lake local (excluido del repo). |
+| `logs/` | Logs de ejecución. |
+| `Makefile` | Orquestador de comandos. |
+| `requirements.txt` | Dependencias de Python. |
+| `README.md` | Documentación del proyecto. |
 
 ---
 
@@ -138,7 +128,6 @@ logs/dev/
 ⚙️ Flujo automático (modo tmux)
 
 Si tenés instalado tmux, podés correr todo el pipeline en una sola terminal:
-
 make tmux-up
 
 Esto crea una sesión con 4 paneles:
@@ -152,11 +141,9 @@ Bronze → Silver
 Silver → Gold
 
 Para salir sin detener nada:
-
 Ctrl + b  luego  d
 
 Y para volver:
-
 tmux attach -t finpipe
 
 ---
@@ -164,15 +151,12 @@ tmux attach -t finpipe
 🧹 Limpieza y mantenimiento
 
 Reiniciar entorno de desarrollo:
-
 make reset
 
 Borrar logs antiguos:
-
 make clean-logs
 
 Apagar todo:
-
 make kill-all
 
 ---
@@ -189,37 +173,35 @@ make kill-all
 
 ---
 
-🌐 Configuración de entornos
+## 🌍 Configuración de entornos
 
-El pipeline soporta múltiples entornos:
+El pipeline soporta múltiples entornos configurables a través de la variable `ENV`:
 
-ENV=dev   # por defecto
-ENV=prod  # para entorno productivo simulado
+| Variable | Descripción |
+|-----------|--------------|
+| `ENV=dev`  | Modo de desarrollo (por defecto). |
+| `ENV=prod` | Modo productivo simulado. |
 
-Ejemplo:
-
+Ejemplo de ejecución:
+```bash
 ENV=prod make bronze-to-silver
 
-Los datos se escribirán en data/prod/....
+Los datos se escribirán automáticamente en la ruta:
+data/prod/...
 
----
 
-📈 Próximos pasos
-
-🚀 Etapa 2 – Orquestador: integración con Apache Airflow o Prefect.
-📦 Etapa 3 – Cloud Deployment: migración a AWS (S3 + MSK + EMR) o GCP (GCS + Dataproc + Pub/Sub).
-📊 Etapa 4 – Visualización: análisis y dashboards con Tableau / Power BI / Streamlit.
-
----
-
+🚀 Próximos pasos (Roadmap técnico)
+Etapa	Descripción	Estado
+🪄 Etapa 2 — Orquestador	Integración con Apache Airflow o Prefect para manejar dependencias entre jobs.	🔜 Próximo
+☁️ Etapa 3 — Cloud Deployment	Migración del stack a AWS (S3 + MSK + EMR) o GCP (GCS + Dataproc + Pub/Sub).	⏳ Planificado
+📊 Etapa 4 — Visualización	Creación de dashboards analíticos con Tableau, Power BI o Streamlit.	🔜 Futuro
 👨‍💻 Autor
 
 Matías Ezequiel Padilla Presas
-📍 Data Engineer | Python, SQL, Spark | Data Pipelines & Cloud | Arquitecto BIM
-🔗 linkedin.com/in/matias-padilla-presas
+📍 Data Engineer | Arquitecto BIM | Python | SQL | Spark | Data Pipelines & Cloud
 
-📦 github.com/MP-08
+🔗 LinkedIn
 
----
+💻 GitHub
 
-🧠 "FinPipe fue desarrollado con enfoque en la calidad de datos, escalabilidad y buenas prácticas de ingeniería, replicando un entorno productivo real."
+🧠 “FinPipe fue desarrollado con enfoque en la calidad de datos, escalabilidad y buenas prácticas de ingeniería, replicando un entorno productivo real.”
