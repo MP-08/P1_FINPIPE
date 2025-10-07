@@ -73,70 +73,57 @@ Cada capa cumple una función clara:
 
 ---
 
-## 🧩 Flujo de ejecución (modo manual)
+## 🌿 Flujo de ejecución (modo manual)
 
-Cada etapa se ejecuta en una terminal separada 👇
+Cada etapa se ejecuta en una terminal separada:
 
-```bash
-# 1️⃣ Iniciar Kafka y Zookeeper
-make start-docker
+1. **Iniciar Kafka y Zookeeper**
+   make start-docker
 
-# 2️⃣ Iniciar el stream Kafka → Bronze
+2. **Stream Kafka → Bronze**
 make stream-bronze
 
-# 3️⃣ Iniciar el stream Bronze → Silver (Delta)
+3. **Stream Bronze → Silver (Delta)**
 make bronze-to-silver
 
-# 4️⃣ Iniciar el stream Silver → Gold (Delta)
+4. **Stream Silver → Gold (Delta)**
 make silver-to-gold
 
-# 5️⃣ Largar el productor de transacciones falsas
+5. **Productor de transacciones falsas**
 make run-producer
 
----
-
-💡 Todos los logs se guardan automáticamente en:
+Logs generados:
 
 logs/dev/
- ├── producer.log
- ├── bronze.log
- ├── silver.log
- └── gold.log
+├─ producer.log
+├─ bronze.log
+├─ silver.log
+└─ gold.log
 
 ---
 
-⚙️ Flujo automático (modo tmux)
 
-Si tenés instalado tmux, podés correr todo el pipeline en una sola terminal:
+🧰 Flujo automático (tmux)
+
+Si tenés tmux instalado, podés levantar todo en una sola terminal:
 make tmux-up
 
-Esto crea una sesión con 4 paneles:
+• Detach (dejar corriendo en background): Ctrl + b, luego d
 
-Producer
-
-Kafka → Bronze
-
-Bronze → Silver
-
-Silver → Gold
-
-Para salir sin detener nada:
-Ctrl + b  luego  d
-
-Y para volver:
+• Reanudar la sesión:
 tmux attach -t finpipe
 
 ---
 
-🧹 Limpieza y mantenimiento
+🧽 Limpieza y mantenimiento
 
-Reiniciar entorno de desarrollo:
+• Reiniciar entorno de desarrollo:
 make reset
 
-Borrar logs antiguos:
+• Borrar logs antiguos:
 make clean-logs
 
-Apagar todo:
+• Apagar todos los procesos (Spark + producer):
 make kill-all
 
 ---
@@ -144,44 +131,52 @@ make kill-all
 🧠 Conceptos clave aplicados
 
 ✅ Kafka Topics → transmisión de eventos financieros simulados.
+
 ✅ Spark Structured Streaming → lectura en tiempo real con tolerancia a fallas.
-✅ Delta Lake → formato ACID con control de versiones y schema evolution.
-✅ Data Validation Layer → separación automática de datos válidos y rechazados.
-✅ Watermarks & Deduplication → manejo de eventos duplicados o tardíos.
-✅ Aggregation Layer → tablas Gold con métricas por fecha, usuario y moneda.
-✅ Makefile Orchestration → ejecución reproducible y controlada del pipeline.
+
+✅ Delta Lake → ACID + control de versiones + schema evolution.
+
+✅ Data Validation Layer → separación de válidos y rechazados.
+
+✅ Watermarks & Deduplication → manejo de tardíos y duplicados.
+
+✅ Aggregation Layer (Gold) → métricas por fecha, usuario y moneda.
+
+✅ Makefile Orchestration → ejecución reproducible del pipeline.
 
 ---
 
-## 🌍 Configuración de entornos
+🌍 Configuración de entornos
 
-El pipeline soporta múltiples entornos configurables a través de la variable `ENV`:
+El pipeline usa la variable ENV:
 
-| Variable | Descripción |
-|-----------|--------------|
-| `ENV=dev`  | Modo de desarrollo (por defecto). |
-| `ENV=prod` | Modo productivo simulado. |
+Variable	Descripción
+ENV=dev	Modo desarrollo (por defecto).
+ENV=prod	Modo productivo simulado.
 
-Ejemplo de ejecución:
-```bash
+Ejemplo:
 ENV=prod make bronze-to-silver
 
-Los datos se escribirán automáticamente en la ruta:
+Ruta de salida:
 data/prod/...
 
+---
 
-🚀 Próximos pasos (Roadmap técnico)
+🗺️ Próximos pasos (Roadmap técnico)
 Etapa	Descripción	Estado
-🪄 Etapa 2 — Orquestador	Integración con Apache Airflow o Prefect para manejar dependencias entre jobs.	🔜 Próximo
-☁️ Etapa 3 — Cloud Deployment	Migración del stack a AWS (S3 + MSK + EMR) o GCP (GCS + Dataproc + Pub/Sub).	⏳ Planificado
-📊 Etapa 4 — Visualización	Creación de dashboards analíticos con Tableau, Power BI o Streamlit.	🔜 Futuro
+2	Orquestador: integrar Apache Airflow / Prefect para dependencias y SLA.	🔜
+3	Cloud: migrar a AWS (S3 + MSK + EMR) o GCP (GCS + Dataproc + Pub/Sub).	⏳
+4	Visualización: dashboards con Tableau / Power BI / Streamlit.	🔜
+
+---
+
 👨‍💻 Autor
 
 Matías Ezequiel Padilla Presas
-📍 Data Engineer | Arquitecto BIM | Python | SQL | Spark | Data Pipelines & Cloud
+Data Engineer | Arquitecto BIM | Python | SQL | Spark | Data Pipelines & Cloud
 
 🔗 LinkedIn
 
 💻 GitHub
 
-🧠 “FinPipe fue desarrollado con enfoque en la calidad de datos, escalabilidad y buenas prácticas de ingeniería, replicando un entorno productivo real.”
+“FinPipe fue desarrollado con enfoque en calidad de datos, escalabilidad y buenas prácticas de ingeniería, replicando un entorno productivo real.”
