@@ -175,8 +175,8 @@ Etapa	Descripción	Estado
 Matías Ezequiel Padilla Presas
 Data Engineer | Arquitecto BIM | Python | SQL | Spark | Data Pipelines & Cloud
 
-🔗 LinkedIn
+🔗 LinkedIn: https://www.linkedin.com/in/matipadilla/
 
-💻 GitHub
+💻 GitHub: https://github.com/MP-08
 
 “FinPipe fue desarrollado con enfoque en calidad de datos, escalabilidad y buenas prácticas de ingeniería, replicando un entorno productivo real.”
