@@ -173,13 +173,12 @@ data/prod/...
 
 ---
 
-👨‍💻 Autor
+## 👨‍💻 Autor
 
-Matías Ezequiel Padilla Presas
-💼 Data Engineer | Arquitecto BIM | Python | SQL | Spark | Data Pipelines & Cloud
+**Matías Ezequiel Padilla Presas**  
+💼 *Data Engineer | Arquitecto BIM | Python | SQL | Spark | Data Pipelines & Cloud*  
 
-🔗 LinkedIn: https://www.linkedin.com/in/matipadilla/
+📎 **LinkedIn:** [linkedin.com/in/matias-padilla-presas](https://linkedin.com/in/matias-padilla-presas)  
+💻 **GitHub:** [github.com/MP-08](https://github.com/MP-08)
 
-💻 GitHub: https://github.com/MP-08
-
-“FinPipe fue desarrollado con enfoque en la calidad de datos, escalabilidad y buenas prácticas de ingeniería, replicando un entorno productivo real.”
+> *FinPipe fue desarrollado con enfoque en la calidad de datos, escalabilidad y buenas prácticas de ingeniería, replicando un entorno productivo real.*
