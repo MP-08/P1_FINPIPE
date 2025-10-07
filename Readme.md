@@ -156,7 +156,6 @@ El pipeline utiliza la variable `ENV` para alternar entre entornos configurables
 | `ENV=prod` | Modo productivo simulado. |
 
 **Ejemplo de ejecución:**
-```bash
 ENV=prod make bronze-to-silver
 
 Los datos se escribirán automáticamente en:
