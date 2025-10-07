@@ -146,37 +146,41 @@ make kill-all
 
 ---
 
-🌍 Configuración de entornos
+## 🌍 Configuración de entornos
 
-El pipeline usa la variable ENV:
+El pipeline utiliza la variable `ENV` para alternar entre entornos configurables:
 
-Variable	Descripción
-ENV=dev	Modo desarrollo (por defecto).
-ENV=prod	Modo productivo simulado.
+| Variable  | Descripción |
+|-----------|--------------|
+| `ENV=dev` | Modo de desarrollo *(por defecto)*. |
+| `ENV=prod` | Modo productivo simulado. |
 
-Ejemplo:
+**Ejemplo de ejecución:**
+```bash
 ENV=prod make bronze-to-silver
 
-Ruta de salida:
+Los datos se escribirán automáticamente en:
 data/prod/...
 
 ---
 
 🗺️ Próximos pasos (Roadmap técnico)
-Etapa	Descripción	Estado
-2	Orquestador: integrar Apache Airflow / Prefect para dependencias y SLA.	🔜
-3	Cloud: migrar a AWS (S3 + MSK + EMR) o GCP (GCS + Dataproc + Pub/Sub).	⏳
-4	Visualización: dashboards con Tableau / Power BI / Streamlit.	🔜
+
+| Etapa | Descripción                                                                                               | Estado |
+| ----: | --------------------------------------------------------------------------------------------------------- | :----: |
+|     2 | 🚀 **Orquestador:** integración con *Apache Airflow* o *Prefect* para gestionar dependencias y SLA.       |   🔜   |
+|     3 | ☁️ **Cloud Deployment:** migración del stack a *AWS (S3 + MSK + EMR)* o *GCP (GCS + Dataproc + Pub/Sub)*. |    ⏳   |
+|     4 | 📊 **Visualización:** creación de dashboards con *Tableau*, *Power BI* o *Streamlit*.                     |   🔜   |
 
 ---
 
 👨‍💻 Autor
 
 Matías Ezequiel Padilla Presas
-Data Engineer | Arquitecto BIM | Python | SQL | Spark | Data Pipelines & Cloud
+💼 Data Engineer | Arquitecto BIM | Python | SQL | Spark | Data Pipelines & Cloud
 
 🔗 LinkedIn: https://www.linkedin.com/in/matipadilla/
 
 💻 GitHub: https://github.com/MP-08
 
-“FinPipe fue desarrollado con enfoque en calidad de datos, escalabilidad y buenas prácticas de ingeniería, replicando un entorno productivo real.”
+“FinPipe fue desarrollado con enfoque en la calidad de datos, escalabilidad y buenas prácticas de ingeniería, replicando un entorno productivo real.”
