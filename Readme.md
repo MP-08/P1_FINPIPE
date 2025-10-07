@@ -95,26 +95,6 @@ make run-producer
 
 ---
 
-## 🧩 Flujo de ejecución (modo manual)
-
-Cada etapa se ejecuta en una terminal separada 👇
-
-```bash
-# 1️⃣ Iniciar Kafka y Zookeeper
-make start-docker
-
-# 2️⃣ Iniciar el stream Kafka → Bronze
-make stream-bronze
-
-# 3️⃣ Iniciar el stream Bronze → Silver (Delta)
-make bronze-to-silver
-
-# 4️⃣ Iniciar el stream Silver → Gold (Delta)
-make silver-to-gold
-
-# 5️⃣ Largar el productor de transacciones falsas
-make run-producer
-
 💡 Todos los logs se guardan automáticamente en:
 
 logs/dev/
